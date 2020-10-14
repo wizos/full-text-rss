@@ -35,7 +35,7 @@ $options->debug = true;
 // ----------------------
 // The number of feed items to process when no API key is supplied
 // and no &max=x value is supplied in the querystring.
-$options->default_entries = 5;
+$options->default_entries = 20;
 
 // Max entries (without access key)
 // ----------------------
@@ -43,7 +43,7 @@ $options->default_entries = 5;
 // This limits the user-supplied &max=x value. For example, if the user
 // asks for 20 items to be processed (&max=20), if max_entries is set to 
 // 10, only 10 will be processed.
-$options->max_entries = 10;
+$options->max_entries = 20;
 
 // Full content
 // ----------------------
@@ -430,22 +430,6 @@ $options->fingerprints = array(
 	'<meta name="generator" content="WordPress' => array('hostname'=>'fingerprint.wordpress.com', 'head'=>true)
 );
 
-// User Agent strings - mapping domain names
-// ----------------------
-// e.g. $options->user_agents = array('example.org' => 'PHP/5.2');
-$options->user_agents = array( 'lifehacker.com' => 'PHP/5.2',
-							   'gawker.com' => 'PHP/5.2',
-							   'deadspin.com' => 'PHP/5.2',
-							   'kotaku.com' => 'PHP/5.2',
-							   'jezebel.com' => 'PHP/5.2',
-							   'io9.com' => 'PHP/5.2',
-							   'jalopnik.com' => 'PHP/5.2',
-							   'gizmodo.com' => 'PHP/5.2',
-							   '.wikipedia.org' => 'Mozilla/5.2',
-							   '.fok.nl' => 'Googlebot/2.1',
-							   'getpocket.com' => 'PHP/5.2'
-							  );
-
 // URL Rewriting
 // ----------------------
 // Currently allows simple string replace of URLs.
@@ -496,11 +480,17 @@ $options->cache_directory_level = 0;
 // ...you get the idea :)
 $options->cache_cleanup = 100;
 
+// Open Graph properties
+// ---------------------
+// By default Full-Text RSS includes Open Graph properties in the output.
+// Set this to false if you do not want to include Open Graph properties.
+$options->opengraph = true;
+
 /////////////////////////////////////////////////
 /// DO NOT CHANGE ANYTHING BELOW THIS ///////////
 /////////////////////////////////////////////////
 
-if (!defined('_FF_FTR_VERSION')) define('_FF_FTR_VERSION', '3.4');
+if (!defined('_FF_FTR_VERSION')) define('_FF_FTR_VERSION', '3.5');
 
 if (basename(__FILE__) == 'config.php') {
 	if (file_exists(dirname(__FILE__).'/custom_config.php')) {
